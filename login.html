@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMetrics | Log in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <main class="auth-wrap">
+
+    <section class="auth-intro">
+      <a href="login.html" class="logo" style="font-size:1.8rem;">Mind<span>Metrics</span></a>
+      <h1 style="margin-top:1.5rem;">Study hard. Stay balanced.</h1>
+      <p>A calm space for first-year students to track stress, focus better and look after their well-being.</p>
+      <ul>
+        <li>🧠 Daily check-ins with a real stress score</li>
+        <li>⏱️ Focus timer: 25 min, 50 min or 1 hr 30 min</li>
+        <li>📈 Weekly and monthly stress trends</li>
+        <li>🌱 500 wellness tips</li>
+      </ul>
+    </section>
+
+    <section class="card auth-card">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="login" role="tab" aria-selected="true">Log in</button>
+        <button type="button" class="tab-btn" data-tab="signup" role="tab" aria-selected="false">Sign up</button>
+      </div>
+
+      <p id="auth-error" class="form-error" role="alert" hidden></p>
+
+      <div id="panel-login">
+        <form id="login-form" novalidate>
+          <div class="field-group">
+            <label class="field" for="login-email">Email</label>
+            <input type="email" id="login-email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field-group">
+            <label class="field" for="login-password">Password</label>
+            <input type="password" id="login-password" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn">Log in</button>
+        </form>
+      </div>
+
+      <div id="panel-signup" hidden>
+        <form id="signup-form" novalidate>
+          <div class="field-group">
+            <label class="field" for="signup-name">Full name</label>
+            <input type="text" id="signup-name" autocomplete="name" required>
+          </div>
+          <div class="field-group">
+            <label class="field" for="signup-email">Email</label>
+            <input type="email" id="signup-email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field-group">
+            <label class="field" for="signup-password">Password (min 6 characters)</label>
+            <input type="password" id="signup-password" autocomplete="new-password" required>
+          </div>
+          <div class="field-group">
+            <label class="field" for="signup-confirm">Confirm password</label>
+            <input type="password" id="signup-confirm" autocomplete="new-password" required>
+          </div>
+          <button type="submit" class="btn">Create account</button>
+        </form>
+      </div>
+
+      <p class="auth-note">Demo login: accounts and data are saved only in this browser. Please don't reuse a real password.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>MindMetrics · First-Year Academic Stress &amp; Study-Balance Hub · Built by Team MindMetrics, Bennett University</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMetrics | Focus Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">Mind<span>Metrics</span></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="timer.html">Timer</a></li>
+          <li><a href="checkin.html">Check-In</a></li>
+        </ul>
+      </nav>
+      <div id="user-area" class="user-area"></div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Focus Timer ⏱️</h1>
+    <p class="page-subtitle">Pick a session length, focus, then take a proper break.</p>
+
+    <div class="timer-layout">
+
+      <section class="card timer-container">
+        <div class="preset-row">
+          <button type="button" class="preset-btn" data-min="25">25 min</button>
+          <button type="button" class="preset-btn" data-min="50">50 min</button>
+          <button type="button" class="preset-btn" data-min="90">1 hr 30 min</button>
+        </div>
+        <div class="custom-row">
+          <label for="custom-min">Custom:</label>
+          <input type="number" id="custom-min" min="1" max="180" placeholder="min">
+          <span>minutes</span>
+          <button type="button" class="btn secondary small" id="custom-set-btn">Set</button>
+        </div>
+
+        <span class="mode-label" id="mode-label">Focus time</span>
+        <div id="clock-display">25:00</div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="controls">
+          <button class="btn" id="start-btn" type="button">Start</button>
+          <button class="btn secondary" id="pause-btn" type="button">Pause</button>
+          <button class="btn secondary" id="reset-btn" type="button">Reset</button>
+          <button class="btn secondary" id="break-btn" type="button">Short Break (5m)</button>
+          <button class="btn secondary" id="long-break-btn" type="button">Long Break (15m)</button>
+        </div>
+
+        <p class="timer-msg" id="timer-msg" aria-live="polite"></p>
+        <p class="session-count" id="session-count"></p>
+      </section>
+
+      <aside class="card twist-box">
+        <h2>Which length should I pick?</h2>
+        <ul>
+          <li><strong>25 min:</strong> classic Pomodoro. Good for starting hard tasks or when your focus is low.</li>
+          <li><strong>50 min:</strong> good for lectures, readings and problem sets.</li>
+          <li><strong>1 hr 30 min:</strong> deep work like debugging a big program. Take a 15-minute break after.</li>
+          <li>Short break is 5 minutes; after long sessions you'll get a longer break automatically.</li>
+          <li>Your chosen length and today's session count are saved on your account.</li>
+          <li>The timer shows in the browser tab, so you can keep it in the background.</li>
+        </ul>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>MindMetrics · First-Year Academic Stress &amp; Study-Balance Hub · Built by Team MindMetrics, Bennett University</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

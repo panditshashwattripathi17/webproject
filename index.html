@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMetrics | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">Mind<span>Metrics</span></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="timer.html">Timer</a></li>
+          <li><a href="checkin.html">Check-In</a></li>
+        </ul>
+      </nav>
+      <div id="user-area" class="user-area"></div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title"><span id="welcome-prefix">Welcome back</span>, <span id="welcome-name">friend</span> 👋</h1>
+    <p class="page-subtitle">Your first-year study and stress overview.</p>
+
+    <div class="dashboard-grid">
+
+      <!-- Stress score: weekly / monthly tabs -->
+      <section class="card span-8">
+        <div class="card-head">
+          <h2>Stress Score</h2>
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab-btn active" data-tab="weekly" role="tab" aria-selected="true">Weekly</button>
+            <button type="button" class="tab-btn" data-tab="monthly" role="tab" aria-selected="false">Monthly</button>
+          </div>
+        </div>
+
+        <!-- Weekly panel -->
+        <div id="panel-weekly">
+          <div class="score-row">
+            <div class="score-circle" id="w-score">--</div>
+            <div>
+              <p class="score-label" id="w-label">No data yet</p>
+              <p class="score-hint" id="w-hint">Do a daily check-in to see your weekly stress score.</p>
+            </div>
+          </div>
+          <div class="week-bars" id="w-bars"></div>
+          <div class="stat-tiles" id="w-stats"></div>
+
+          <h3 class="table-title">Last 5 weeks compared</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Week</th><th>Check-ins</th><th>Avg score</th><th>Level</th>
+                  <th>Avg sleep</th><th>Avg study</th><th>Change</th>
+                </tr>
+              </thead>
+              <tbody id="week-table-body"></tbody>
+            </table>
+          </div>
+          <p class="table-note">Score runs from 0 (very relaxed) to 100 (very stressed). Lower is better.</p>
+        </div>
+
+        <!-- Monthly panel -->
+        <div id="panel-monthly" hidden>
+          <div class="score-row">
+            <div class="score-circle" id="m-score">--</div>
+            <div>
+              <p class="score-label" id="m-label">No data yet</p>
+              <p class="score-hint" id="m-hint">Do daily check-ins to see your monthly stress score.</p>
+            </div>
+          </div>
+          <div class="week-bars" id="m-bars"></div>
+          <div class="stat-tiles" id="m-stats"></div>
+
+          <h3 class="table-title">Last 3 months compared</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Month</th><th>Check-ins</th><th>Avg score</th><th>Level</th>
+                  <th>Avg sleep</th><th>Avg study</th><th>Change</th>
+                </tr>
+              </thead>
+              <tbody id="month-table-body"></tbody>
+            </table>
+          </div>
+          <p class="table-note">Score runs from 0 (very relaxed) to 100 (very stressed). Lower is better.</p>
+        </div>
+
+        <div class="chips" style="margin-top:1rem;">
+          <span class="score-hint">Common triggers:</span>
+          <span class="chip">Exams</span>
+          <span class="chip">Deadlines</span>
+          <span class="chip">Social life</span>
+        </div>
+      </section>
+
+      <!-- Deadlines -->
+      <section class="card span-4">
+        <div class="card-head">
+          <h2>Upcoming Deadlines</h2>
+          <span class="chip" id="deadline-count">0 open</span>
+        </div>
+        <ul class="deadline-list" id="deadline-list"></ul>
+
+        <form class="add-form" id="deadline-form">
+          <input type="text" id="dl-title" placeholder="New deadline, e.g. Physics quiz" maxlength="80" aria-label="Deadline title">
+          <div class="row">
+            <input type="date" id="dl-date" aria-label="Due date">
+            <button type="submit" class="btn">Add</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Mood check preview -->
+      <section class="card span-4">
+        <h2 style="margin-bottom:0.75rem;">Daily Check-In</h2>
+        <p style="margin-bottom:1.1rem;">Answer a few quick questions about mood, sleep and workload. We turn them into your stress score.</p>
+        <a href="checkin.html" class="btn">Check in now</a>
+      </section>
+
+      <!-- Tip of the day -->
+      <section class="card span-8">
+        <h2>Wellness Tip</h2>
+        <span class="tip-theme" id="tip-theme">…</span>
+        <p class="tip-text" id="tip-text">Loading tip…</p>
+        <button type="button" class="btn secondary small" id="new-tip-btn">Show another tip</button>
+        <p class="muted-note" id="tip-count"></p>
+      </section>
+
+      <!-- Demo tools -->
+      <section class="card span-12">
+        <div class="card-head" style="margin-bottom:0.5rem;">
+          <h2>Demo tools</h2>
+        </div>
+        <p class="score-hint" style="margin-bottom:1rem;">Want to see the charts and comparison tables filled in right away (for example during your presentation)? Load sample data. You can clear it any time.</p>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" id="demo-load-btn">Load sample data</button>
+          <button type="button" class="btn danger" id="demo-clear-btn">Clear my data</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>MindMetrics · First-Year Academic Stress &amp; Study-Balance Hub · Built by Team MindMetrics, Bennett University</p>
+  </footer>
+
+  <script src="tips.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

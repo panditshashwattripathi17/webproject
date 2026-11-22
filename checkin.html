@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindMetrics | Daily Check-In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">Mind<span>Metrics</span></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="timer.html">Timer</a></li>
+          <li><a href="checkin.html">Check-In</a></li>
+        </ul>
+      </nav>
+      <div id="user-area" class="user-area"></div>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Daily Stress Pulse-Check 💬</h1>
+    <p class="page-subtitle">Answer honestly. Your numbers decide your stress score, not just your mood.</p>
+
+    <div class="checkin-layout">
+
+      <!-- Left: the form -->
+      <section class="card">
+        <form id="mood-form" onsubmit="return false;">
+          <p class="section-label">1. How do you feel right now?</p>
+          <div class="mood-options">
+            <button type="button" class="mood-btn" data-mood="calm"><span class="emoji">😌</span>Calm</button>
+            <button type="button" class="mood-btn" data-mood="moderate"><span class="emoji">😐</span>Moderate</button>
+            <button type="button" class="mood-btn" data-mood="overwhelmed"><span class="emoji">😣</span>Overwhelmed</button>
+          </div>
+
+          <p class="section-label">2. Rate your day</p>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-stress">Stress level</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">1 = very calm, 10 = extremely stressed</span>
+            <input type="range" id="ci-stress" min="1" max="10" step="1" value="5" data-unit="/10">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-energy">Energy level</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">1 = exhausted, 10 = full of energy</span>
+            <input type="range" id="ci-energy" min="1" max="10" step="1" value="5" data-unit="/10">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-workload">Workload feeling</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">1 = very light, 10 = completely overloaded</span>
+            <input type="range" id="ci-workload" min="1" max="10" step="1" value="5" data-unit="/10">
+          </div>
+
+          <p class="section-label" style="margin-top:1.5rem;">3. Your habits</p>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-sleep">Sleep last night</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">Hours slept</span>
+            <input type="range" id="ci-sleep" min="0" max="12" step="0.5" value="7" data-unit=" h">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-study">Study time today</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">Hours of studying or assignments</span>
+            <input type="range" id="ci-study" min="0" max="14" step="0.5" value="4" data-unit=" h">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-top">
+              <label for="ci-exercise">Exercise / movement today</label>
+              <span class="slider-val"></span>
+            </div>
+            <span class="slider-help">Walking, gym, sports (minutes)</span>
+            <input type="range" id="ci-exercise" min="0" max="120" step="5" value="0" data-unit=" min">
+          </div>
+
+          <p id="ci-error" class="form-error" role="alert" hidden></p>
+          <button type="button" class="btn" id="save-checkin">Save check-in &amp; see my score</button>
+        </form>
+      </section>
+
+      <!-- Right: result + history -->
+      <div class="stack">
+        <section class="card">
+          <h2 style="margin-bottom:1rem;">Today's result</h2>
+
+          <p id="result-empty" class="empty-note">Fill in the form and press Save. Your stress score, a breakdown of what drove it, and tailored tips will appear here.</p>
+
+          <div id="result-box" hidden>
+            <div class="result-head">
+              <div class="score-circle small" id="res-score">--</div>
+              <div>
+                <p class="score-label" id="res-label"></p>
+                <p class="score-hint" id="res-sub"></p>
+              </div>
+            </div>
+            <p class="section-label">What contributed (stress points)</p>
+            <div id="res-breakdown"></div>
+            <div id="dynamic-advice-box" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 style="margin-bottom:0.75rem;">Your last 7 check-ins</h2>
+          <ul class="history-list" id="history-list"></ul>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>MindMetrics · First-Year Academic Stress &amp; Study-Balance Hub · Built by Team MindMetrics, Bennett University</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
